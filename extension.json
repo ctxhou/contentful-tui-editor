@@ -1,0 +1,8 @@
+{
+  "id": "contentful-tui-editor",
+  "name": "contentful-tui-editor",
+  "srcdoc": "./build/index.html",
+  "fieldTypes": [
+    "Text"
+  ]
+}
