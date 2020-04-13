@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { init } from 'contentful-ui-extensions-sdk';
 import 'codemirror/lib/codemirror.css';
-import '@toast-ui/editor/dist/toastui-editor.css';
+import './toastui-editor.css';
 import tableMergedCell from '@toast-ui/editor-plugin-table-merged-cell';
 import 'tui-color-picker/dist/tui-color-picker.css';
 
@@ -22,6 +22,7 @@ export class App extends React.Component {
     super(props);
     this.state = {
       value: props.sdk.field.getValue() || '',
+      changed: false,
       isSaving: false,
     };
   }
@@ -42,6 +43,19 @@ export class App extends React.Component {
     this.setState({ value });
   };
 
+  handleChange = () => {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(() => {
+      const md = this.editorRef.current.getInstance().getMarkdown();
+      this.setState({ isSaving: true });
+      this.props.sdk.field.setValue(md).then(() => {
+        this.setState({ isSaving: false });
+      });
+    }, 500)
+  }
+
   handleClick = () => {
     this.setState({ isSaving: true });
     const md = this.editorRef.current.getInstance().getMarkdown();
@@ -51,7 +65,7 @@ export class App extends React.Component {
   };
 
   render() {
-    const { isSaving, value } = this.state;
+    const { isSaving, value, changed } = this.state;
     return (
       <>
         <Editor
@@ -62,6 +76,7 @@ export class App extends React.Component {
           height="600px"
           useCommandShortcut={true}
           ref={this.editorRef}
+          onChange={this.handleChange}
         />
         <div style={{marginTop: '10px'}} />
         <button
@@ -78,8 +93,10 @@ export class App extends React.Component {
             width: '100%',
             borderRdius: '.25rem',
           }}
-          onClick={this.handleClick}>
-          {isSaving ? 'Saving...' : 'Save'}
+          onClick={this.handleClick}
+          disabled={!changed}
+        >
+          {isSaving ? '存檔中..' : '存檔'}
         </button>
       </>
     );
