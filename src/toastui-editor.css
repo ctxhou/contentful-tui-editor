@@ -1420,6 +1420,7 @@
    max-width: 100%;
    margin: 0 auto;
    display: block;
+   max-height: 400px;
  }
 
  .tui-editor-contents table {
