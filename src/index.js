@@ -7,6 +7,7 @@ import './toastui-editor.css';
 import tableMergedCell from '@toast-ui/editor-plugin-table-merged-cell';
 import 'tui-color-picker/dist/tui-color-picker.css';
 
+import imagePlugin from './image-plugin';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import { Editor } from '@toast-ui/react-editor';
 
@@ -66,10 +67,11 @@ export class App extends React.Component {
 
   render() {
     const { isSaving, value, changed } = this.state;
+    const {sdk} = this.props;
     return (
       <>
         <Editor
-          plugins={[tableMergedCell, colorSyntax]}
+          plugins={[tableMergedCell, colorSyntax, [imagePlugin, {sdk}]]}
           initialValue={value}
           initialEditType="wysiwyg"
           previewStyle="vertical"
@@ -77,6 +79,28 @@ export class App extends React.Component {
           useCommandShortcut={true}
           ref={this.editorRef}
           onChange={this.handleChange}
+          toolbarItems={[
+            'heading',
+            'bold',
+            'italic',
+            'strike',
+            'divider',
+            'hr',
+            'quote',
+            'divider',
+            'ul',
+            'ol',
+            'task',
+            'indent',
+            'outdent',
+            'divider',
+            'table',
+            'link',
+            'divider',
+            'code',
+            'codeblock',
+            'divider',
+          ]}
         />
         <div style={{marginTop: '10px'}} />
         <button

@@ -58,7 +58,10 @@
  }
 
  .te-md-container .te-editor {
-   line-height: 1.5;
+   margin-top: 0;
+   margin-bottom: 1.25rem;
+   font-size: 18px;
+   line-height: 1.7;
  }
 
  .te-md-container .te-editor,
@@ -633,11 +636,11 @@
  }
 
  .te-heading-add h1 {
-   font-size: 24px;
+   font-size: 32px;
  }
 
  .te-heading-add h2 {
-   font-size: 22px;
+   font-size: 24px;
  }
 
  .te-heading-add h3 {
@@ -645,15 +648,15 @@
  }
 
  .te-heading-add h4 {
-   font-size: 18px;
- }
-
- .te-heading-add h5 {
    font-size: 16px;
  }
 
- .te-heading-add h6 {
+ .te-heading-add h5 {
    font-size: 14px;
+ }
+
+ .te-heading-add h6 {
+   font-size: 12px;
  }
 
  .te-dropdown-toolbar {
@@ -1322,31 +1325,41 @@
  .tui-editor-contents h2,
  .tui-editor-contents h3,
  .tui-editor-contents h5 {
-   font-weight: bold;
+   font-weight: 600;
  }
 
  .tui-editor-contents h1 {
-   font-size: 1.6rem;
+  font-size: 32px;
    color: #000;
    margin: 0;
  }
 
  .tui-editor-contents h2 {
-   font-size: 1.3rem;
+  font-size: 24px;
    color: #333;
    margin: 0;
  }
 
- .tui-editor-contents h3,
+ .tui-editor-contents h3 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+ }
+
  .tui-editor-contents h4 {
-   font-size: 1.2rem;
+   font-size: 16px;
    color: #333;
    margin: 0;
  }
 
- .tui-editor-contents h5,
+ .tui-editor-contents h5 {
+   font-size: 14px;
+   color: #333;
+   margin: 0;
+ }
+
  .tui-editor-contents h6 {
-   font-size: 1rem;
+   font-size: 12px;
    color: #333;
    margin: 0;
  }
@@ -1404,8 +1417,9 @@
  .tui-editor-contents img {
    margin: 4px 0 10px;
    box-sizing: border-box;
-   vertical-align: top;
    max-width: 100%;
+   margin: 0 auto;
+   display: block;
  }
 
  .tui-editor-contents table {
@@ -1489,7 +1503,7 @@
  }
 
  .tui-editor-contents {
-   font-size: 13px;
+   font-size: 18px;
    margin: 0;
    padding: 0;
  }
